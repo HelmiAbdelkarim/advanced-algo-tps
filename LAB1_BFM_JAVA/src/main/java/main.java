@@ -67,6 +67,18 @@ public class main {
         return merged.toArray(new int[merged.size()][]);
     }
 
+
+    //EXERCISE 4: POLYNOMIAL EVALUATION
+    public static float hornerEval(float[] coeffs, float x) {
+        int n = coeffs.length;
+        if (n == 0) return 0;
+        float result = coeffs[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            result = result * x + coeffs[i];
+        }
+        return result;
+    }
+
     //EXERCISE 6: APPROACH HASHMAP
     public static int firstUniqChar(String s){
         // Edge cases
@@ -119,5 +131,8 @@ public class main {
 
         System.out.println("The index of the first unique character for " + s + "is: " + firstUniqCharLinked(sLe));
 
+        float[] coeffs = { 1f, 2f, 3f };
+        float xVal = 2f;
+        System.out.println("HornerEval([1,2,3], " + xVal + ") = " + hornerEval(coeffs, xVal));
     }
 }
