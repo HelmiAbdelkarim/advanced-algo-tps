@@ -78,6 +78,63 @@ public class main {
         }
         return result;
     }
+    
+    //EXERCISE 5: ARRAY ROTATION
+    // Formula: k_effective = k % n (handles k > array length)
+    // New position of element at index i: (i + k) % n
+
+    // Approach A: Temporary array — O(n) time, O(n) space
+    public static void rotateTempArray(int[] vect, int k) {
+        int n = vect.length;
+        if (n == 0) return;
+        k = k % n; // Math formula: k_effective = k mod n
+        if (k == 0) return;
+
+        int[] temp = new int[n];
+        // Formula: newIndex = (i + k) % n
+        for (int i = 0; i < n; i++) {
+            temp[(i + k) % n] = vect[i];
+        }
+        System.arraycopy(temp, 0, vect, 0, n);
+    }
+
+    // Approach B: Rotate one by one — O(n*k) time, O(1) space
+    public static void rotateOneByOne(int[] vect, int k) {
+        int n = vect.length;
+        if (n == 0) return;
+        k = k % n;
+
+        for (int step = 0; step < k; step++) {
+            int last = vect[n - 1];
+            for (int i = n - 1; i > 0; i--) {
+                vect[i] = vect[i - 1];
+            }
+            vect[0] = last;
+        }
+    }
+
+    // Approach C: Reverse segments — O(n) time, O(1) space (OPTIMAL)
+    // Principle: 3 reversals => reverse all, reverse first k, reverse last n-k
+    public static void rotateReverse(int[] vect, int k) {
+        int n = vect.length;
+        if (n == 0) return;
+        k = k % n;
+        if (k == 0) return;
+
+        reverse(vect, 0, n - 1);   // Step 1: reverse entire array
+        reverse(vect, 0, k - 1);   // Step 2: reverse first k elements
+        reverse(vect, k, n - 1);   // Step 3: reverse remaining n-k elements
+    }
+
+    private static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int tmp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = tmp;
+            start++;
+            end--;
+        }
+    }
 
     //EXERCISE 6: APPROACH HASHMAP
     public static int firstUniqChar(String s){
