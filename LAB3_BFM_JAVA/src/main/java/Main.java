@@ -2,9 +2,6 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("=== PART 1: LAB MANUAL EXAMPLE ===");
         testLabExample();
-
-        System.out.println("\n=== PART 2: EDGE CASES ===");
-        testEdgeCases();
     }
 
     private static void testLabExample() {
