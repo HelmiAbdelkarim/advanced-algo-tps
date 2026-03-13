@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="algoClasss" />
-        <module name="LAB2_BFM_JAVA" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="LAB2_BFM_JAVA" target="23" />
+    </bytecodeTargetLevel>
   </component>
 </project>
