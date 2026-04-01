@@ -31,17 +31,18 @@ function calculate_node_height(node, target_id) {
     }
 
     let leftSubTreeHeight = calculate_node_height(node.left, target_id);
-    let rightSubTreeHeight = calculate_node_height(node.right, target_id);
 
     if (leftSubTreeHeight !== -1) {
-      return leftSubTreeHeight;
+        return leftSubTreeHeight;
     }
+
+    let rightSubTreeHeight = calculate_node_height(node.right, target_id);
 
     if (rightSubTreeHeight !== -1) {
-       return rightSubTreeHeight;
+        return rightSubTreeHeight;
     }
 
-    return;
+    return -1;
 };
 
 function count_nodes(node) {
@@ -51,6 +52,16 @@ function count_nodes(node) {
     }
     return 1 + count_nodes(node.left) + count_nodes(node.right);
 
+}
+
+function count_leaves(node) {
+    if (node === null) {
+        return 0;
+    }
+    if (node.left === null && node.right === null) {
+        return 1;
+    }
+    return count_leaves(node.left) + count_leaves(node.right);
 }
 
 function is_balanced(node) {
@@ -69,10 +80,13 @@ function is_balanced(node) {
     return is_balanced(node.left) && is_balanced(node.right);
 }
 
+
+
 export { 
     CategoryNode,
     calculate_height,
     calculate_node_height,
     count_nodes,
+    count_leaves,
     is_balanced
 };
