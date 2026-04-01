@@ -2,6 +2,7 @@ const {
     CategoryNode,
     calculate_height,
     calculate_node_height,
+    count_nodes,
 } = require('./exercice1.js');
 
 
@@ -25,6 +26,7 @@ node2.right = node6;
 console.log("calculate_height(root): " + calculate_height(root));
 console.log("calculate_node_height(root, 9): " + calculate_node_height(root, 9));
 console.log("calculate_node_height(root, 4): " + calculate_node_height(root, 4));
+console.log("count_nodes(root): " + count_nodes(root));
 
 
 

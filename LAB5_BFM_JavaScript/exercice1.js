@@ -42,4 +42,13 @@ function calculate_node_height(node, target_id) {
     return;
 };
 
-export { CategoryNode, calculate_height, calculate_node_height };
+function count_nodes(node) {
+    
+    if (node === null) {
+        return 0;
+    }
+    return 1 + count_nodes(node.left) + count_nodes(node.right);
+
+}
+
+export { CategoryNode, calculate_height, calculate_node_height, count_nodes };
