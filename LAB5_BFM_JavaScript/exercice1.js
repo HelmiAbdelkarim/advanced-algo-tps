@@ -9,6 +9,7 @@ class CategoryNode {
 };
 
 function calculate_height(node) {
+
     if (node === null) {
         return -1;
     }
@@ -20,6 +21,7 @@ function calculate_height(node) {
 };
 
 function calculate_node_height(node, target_id) {
+
     if (node === null) {
         return -1;
     }
@@ -51,4 +53,26 @@ function count_nodes(node) {
 
 }
 
-export { CategoryNode, calculate_height, calculate_node_height, count_nodes };
+function is_balanced(node) {
+
+    if (node === null) {
+        return true;
+    }
+
+    let leftSubTreeHeight = calculate_height(node.left);
+    let rightSubTreeHeight = calculate_height(node.right);
+
+    if (Math.abs(leftSubTreeHeight - rightSubTreeHeight) > 1) {
+        return false;
+    }
+
+    return is_balanced(node.left) && is_balanced(node.right);
+}
+
+export { 
+    CategoryNode,
+    calculate_height,
+    calculate_node_height,
+    count_nodes,
+    is_balanced
+};
