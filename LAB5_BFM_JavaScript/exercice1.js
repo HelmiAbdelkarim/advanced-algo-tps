@@ -80,7 +80,35 @@ function is_balanced(node) {
     return is_balanced(node.left) && is_balanced(node.right);
 }
 
+function is_full_binary_tree(node) {
+    if (node === null) {
+        return true;
+    }
+    if (node.left === null && node.right === null) {
+        return true;
+    }
+    return is_full_binary_tree(node.left) && is_full_binary_tree(node.right);
+}
 
+function is_perfect_binary_tree(node) {
+    if (node === null) {
+        return true;
+    }
+    if (node.left === null && node.right === null) {
+        return true;
+    }
+    return is_perfect_binary_tree(node.left) && is_perfect_binary_tree(node.right);
+}
+
+function is_complete_binary_tree(node) {
+    if (node === null) {
+        return true;
+    }
+    if (node.left === null && node.right === null) {
+        return true;
+    }
+    return is_complete_binary_tree(node.left) && is_complete_binary_tree(node.right);
+}
 
 export { 
     CategoryNode,
@@ -88,5 +116,8 @@ export {
     calculate_node_height,
     count_nodes,
     count_leaves,
-    is_balanced
+    is_balanced,
+    is_full_binary_tree,
+    is_perfect_binary_tree,
+    is_complete_binary_tree
 };

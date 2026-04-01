@@ -4,7 +4,10 @@ const {
     calculate_node_height,
     count_nodes,
     count_leaves,
-    is_balanced
+    is_balanced,
+    is_full_binary_tree,
+    is_perfect_binary_tree,
+    is_complete_binary_tree
 } = require('./exercice1.js');
 
 
@@ -30,6 +33,9 @@ console.log("calculate_node_height(root, 7): " + calculate_node_height(root, 7))
 console.log("count_nodes(root): " + count_nodes(root));
 console.log("count_leaves(root): " + count_leaves(root));
 console.log("is_balanced(root): " + is_balanced(root));
+console.log("is_full_binary_tree(root): " + is_full_binary_tree(root));
+console.log("is_perfect_binary_tree(root): " + is_perfect_binary_tree(root));
+console.log("is_complete_binary_tree(root): " + is_complete_binary_tree(root));
 
 
 
