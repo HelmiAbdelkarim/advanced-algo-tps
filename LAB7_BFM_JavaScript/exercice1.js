@@ -19,4 +19,17 @@ function split_region(x, y, width, height, min_size, regions = []) {
     return regions;
 }
 
-export { split_region };
+function count_points_in_region(points, x, y, width, height) {
+    let count = 0;
+
+    for (const point of points) {
+        if (point.x >= x && point.x < x + width &&
+            point.y >= y && point.y < y + height) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+export { split_region, count_points_in_region };
