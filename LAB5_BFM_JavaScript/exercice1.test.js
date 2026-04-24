@@ -1,0 +1,42 @@
+const {
+    CategoryNode,
+    calculate_height,
+    calculate_node_height,
+    count_nodes,
+    count_leaves,
+    is_balanced,
+    is_full_binary_tree,
+    is_perfect_binary_tree,
+    is_complete_binary_tree
+} = require('./exercice1.js');
+
+
+let root = new CategoryNode(1, "Technology", 150);
+let node1 = new CategoryNode(3, "Design", 65);
+let node2 = new CategoryNode(2, "Programming", 85);
+let node3 = new CategoryNode(4, "Python", 42);
+let node4 = new CategoryNode(5, "Django", 18);
+let node5 = new CategoryNode(6, "Flask", 12);
+let node6 = new CategoryNode(7, "Java", 30);
+let node7 = new CategoryNode(8, "UI/UX", 38);
+let node8 = new CategoryNode(9, "Graphics", 22);
+
+root.left = node1;
+root.right = node2;
+node1.left = node8;
+node1.right = node7;
+node2.left = node5;
+node2.right = node6;
+
+console.log("calculate_height(root): " + calculate_height(root));
+console.log("calculate_node_height(root, 7): " + calculate_node_height(root, 7));
+console.log("count_nodes(root): " + count_nodes(root));
+console.log("count_leaves(root): " + count_leaves(root));
+console.log("is_balanced(root): " + is_balanced(root));
+console.log("is_full_binary_tree(root): " + is_full_binary_tree(root));
+console.log("is_perfect_binary_tree(root): " + is_perfect_binary_tree(root));
+console.log("is_complete_binary_tree(root): " + is_complete_binary_tree(root));
+
+
+
+

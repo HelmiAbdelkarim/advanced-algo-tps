@@ -16,7 +16,6 @@ function createSampleThread() {
     let reply401 = new CommentNode(401, "Bob", "It was delicious!", new Date("2024-01-15 12:30"), 12);
     let reply202 = new CommentNode(202, "Charlie", "Can I use olive oil instead?", new Date("2024-01-15 11:45"), 5);
     let reply302 = new CommentNode(302, "Alice", "Yes, that works too!", new Date("2024-01-15 13:00"), 7);
-
     reply301.addReply(reply401);
     reply201.addReply(reply301);
     reply202.addReply(reply302);
@@ -84,6 +83,10 @@ function runTests() {
     console.log("=".repeat(60));
     let threadForDeletion = createSampleThread();
     console.log("Before deletion - Total: " + count_total_comments(threadForDeletion));
+    
+    console.log("\nDeleting comment 201 (cascades to 301 and 401)...\n");
+    let updatedThread = delete_comment(201, threadForDeletion);
+   
 
     console.log("\nDeleting comment 201 (cascades to 301 and 401)...\n");
     let updatedThread = delete_comment(201, threadForDeletion);
@@ -99,4 +102,3 @@ function runTests() {
 }
 
 runTests();
-

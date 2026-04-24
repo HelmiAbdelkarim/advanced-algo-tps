@@ -19,8 +19,12 @@ function display_thread(comment, level) {
         indent = indent + "  ";
     }
 
+    
     console.log(indent + "Comment " + comment.comment_id + " (" + comment.user_id + "): " + comment.content);
+   
 
+    console.log(indent + "Comment " + comment.comment_id + " (" + comment.user_id + "): " + comment.content);
+  
     for (const reply of comment.replies) {
         display_thread(reply, level + 1);
     }
@@ -28,6 +32,11 @@ function display_thread(comment, level) {
 
 function count_total_comments(comment) {
     let count = 1;
+    
+    for (const reply of comment.replies) {
+        count = count + count_total_comments(reply);
+    }
+ 
 
     for (const reply of comment.replies) {
         count = count + count_total_comments(reply);
@@ -38,7 +47,11 @@ function count_total_comments(comment) {
 
 function total_likes(comment) {
     let sum = comment.likes;
-
+    
+    for (const reply of comment.replies) {
+        sum = sum + total_likes(reply);
+    }
+   
     for (const reply of comment.replies) {
         sum = sum + total_likes(reply);
     }
@@ -50,7 +63,7 @@ function find_deepest_reply(comment) {
     if (comment.replies.length === 0) {
         return 0;
     }
-
+  
     let max_depth = 0;
     for (const reply of comment.replies) {
         let depth = find_deepest_reply(reply);
@@ -64,6 +77,11 @@ function find_deepest_reply(comment) {
 
 function search_by_user(user_id, comment) {
     let result = [];
+    
+    if (comment.user_id === user_id) {
+        result.push(comment);
+    }
+    
 
     if (comment.user_id === user_id) {
         result.push(comment);
@@ -120,4 +138,3 @@ module.exports = {
     contains_keyword,
     delete_comment
 };
-
